@@ -14,9 +14,11 @@ var data = [
 	{author: 'William Glasser', quote: 'What students lack in school is an intellectual relationship or conversation with the teacher.'},
 	{author: 'John Steinbeck', quote: 'No man really knows about other human beings. The best he can do is to suppose that they are like himself.'},
 	{author: 'Aziz Ansari', quote: 'Why do we all say we prefer honesty but rarely give that courtesy to others?'},
-	{author: 'Carl Jung', quote: 'Everyone knows nowadays that people 'have complexes'. What is not so well known, though far more important theoretically, is that complexes can have us.'},
+	{author: 'Carl Jung', quote: 'Everyone knows nowadays that people \'have complexes\'. What is not so well known, though far more important theoretically, is that complexes can have us.'},
 	{author: 'Alicia Keys', quote: 'I lived with my mom in a really small apartment. My bedroom was like in the living room. That\'s why I still love to sleep on couches now.'},
 	{author: 'Elon Musk', quote: 'I don\'t spend my time pontificating about high-concept things; I spend my time solving engineering and manufacturing problems.'},
 	{author: 'J.B. Smoove', quote: 'You turn hotdogs with tongs. Don\'t you ever use those tongs on a hamburger'},
 	{author: 'Daniel Day-Lewis', quote: 'I suppose I have a highly developed capacity for self-delusion, so it\'s no problem for me to believe that I\'m somebody else.'},
 	];
+
+document.getElementById('quote').innerHTML = data[0].quote;
