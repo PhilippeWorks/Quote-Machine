@@ -2,8 +2,21 @@
 	box-sizing: border-box;
 	margin: 0 auto;
 	border: 1px dotted red;
+	color: white;
+	text-align: center;
+	font-family: 'Anton', sans-serif;
 }
 
-.container {
+.quote-app {
 	padding: 25%;
+}
+
+.menu {
+	position: relative;
+}
+#quote-button {
+	position: absolute;
+	right: 0;
+	background-color: white;
+	color: #42f45f;
 }
