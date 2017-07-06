@@ -35,8 +35,8 @@ var randomizer = function () {
 //Selects and sipays new color scheme
 var colorRandomizer = function () {
 	var colorRandom = Math.round(Math.random()*colorData.length);
-	document.getElementById('body').style.backgroundColor = ;
-	document.getElementById('quote-button').style.backgroundColor = ;
+	document.getElementById('body').style.backgroundColor = colorData[colorRandom];
+	document.getElementById('quote-button').style.color = colorData[colorRandom];
 }
 
 colorRandomizer();
