@@ -5,10 +5,11 @@
 	color: white;
 	text-align: center;
 	font-family: 'Anton', sans-serif;
+	max-height: 750px;
 }
-
-.quote-app {
-	padding: 25%;
+body {
+	padding: 15% 25% 30% 25%;
+	position: relative;
 }
 
 .menu {
@@ -19,4 +20,10 @@
 	right: 0;
 	background-color: white;
 	color: #42f45f;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	right: 2%;
 }

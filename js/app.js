@@ -22,30 +22,56 @@ var data = [
 	{author: 'Daniel Day-Lewis', quote: 'I suppose I have a highly developed capacity for self-delusion, so it\'s no problem for me to believe that I\'m somebody else.'},
 	];
 
+//twitter widget.js
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+
+//variables for id elements
+var quoteButton = document.getElementById('quote-button');
+var body = document.getElementById('body');
+var quoteText = document.getElementById('quote');
+var authorText = document.getElementById('author');
+var twitterButton = document.getElementById('twitter-button');
+
 //model colors
 var colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4f142', '#f49242', '#42f4eb', '#42f45f'];
 
-//selects and displays a new quote on random
+//selects and displays a new quote on random and updates tweet
 var randomizer = function () {
 	var random = Math.round(Math.random()*data.length);
-	document.getElementById('quote').innerHTML = "\"" + data[random].quote + "\"";
-	document.getElementById('author').innerHTML = "by " + data[random].author;
+	quoteText.innerHTML = "\"" + data[random].quote + "\"";
+	authorText.innerHTML = "Once upon a time " + data[random].author + " said,";
+
+	twitterButton.setAttribute("data-text", quoteText.innerHTML + ' - ' + authorText.innerHTML);
 };
 
-//Selects and sipays new color scheme
+//Selects and displays new color scheme
 var colorRandomizer = function () {
 	var colorRandom = Math.round(Math.random()*colorData.length);
-	document.getElementById('body').style.backgroundColor = colorData[colorRandom];
-	document.getElementById('quote-button').style.color = colorData[colorRandom];
+	body.style.backgroundColor = colorData[colorRandom];
+	quoteButton.style.color = colorData[colorRandom];
 }
 
 colorRandomizer();
 randomizer(); 
 
 //ties function to quote-button
-document.getElementById('quote-button').addEventListener('click', function() { 
+quoteButton.addEventListener('click', function() { 
 	randomizer();
 	colorRandomizer();
 });
-
 
