@@ -22,41 +22,21 @@ var data = [
 	{author: 'Daniel Day-Lewis', quote: 'I suppose I have a highly developed capacity for self-delusion, so it\'s no problem for me to believe that I\'m somebody else.'},
 	];
 
-//twitter widget.js
-window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));
-
 //variables for id elements
 var quoteButton = document.getElementById('quote-button');
 var body = document.getElementById('body');
 var quoteText = document.getElementById('quote');
 var authorText = document.getElementById('author');
-var twitterButton = document.getElementById('twitter-button');
+var twitterButton = document.getElementById('twitter-share-button');
 
 //model colors
-var colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4f142', '#f49242', '#42f4eb', '#42f45f'];
+var colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb', '#42f45f', '#680000', '#879A9B', '#166C00', '#00FFC4'];
 
 //selects and displays a new quote on random and updates tweet
 var randomizer = function () {
 	var random = Math.round(Math.random()*data.length);
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
 	authorText.innerHTML = "Once upon a time " + data[random].author + " said,";
-
-	twitterButton.setAttribute("data-text", quoteText.innerHTML + ' - ' + authorText.innerHTML);
 };
 
 //Selects and displays new color scheme
@@ -75,3 +55,5 @@ quoteButton.addEventListener('click', function() {
 	colorRandomizer();
 });
 
+//twitter button
+twitterButton.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + quoteText.innerHTML + ' ' + authorText.innerHTML);
