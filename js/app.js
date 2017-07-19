@@ -24,7 +24,7 @@ var data = [
 
 //variables for id elements
 var quoteButton = document.getElementById('quote-button');
-var body = document.getElementById('body');
+var body = document.getElementsByTagName('body')[0];
 var quoteText = document.getElementById('quote');
 var authorText = document.getElementById('author');
 var twitterButton = document.getElementById('twitter-share-button');
@@ -34,14 +34,18 @@ var colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb
 
 //selects and displays a new quote on random and updates tweet
 var randomizer = function () {
-	var random = Math.round(Math.random()*data.length);
+	var random = Math.round(Math.random()*data.length) - 1;
+
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
 	authorText.innerHTML = "Once upon a time " + data[random].author + " said,";
+
+	//for tweet button
+	twitterButton.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + quoteText.innerHTML + ' ' + data[random].author);
 };
 
 //Selects and displays new color scheme
 var colorRandomizer = function () {
-	var colorRandom = Math.round(Math.random()*colorData.length);
+	var colorRandom = Math.round(Math.random()*colorData.length) - 1;
 	body.style.backgroundColor = colorData[colorRandom];
 	quoteButton.style.color = colorData[colorRandom];
 }
@@ -54,6 +58,3 @@ quoteButton.addEventListener('click', function() {
 	randomizer();
 	colorRandomizer();
 });
-
-//twitter button
-twitterButton.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + quoteText.innerHTML + ' ' + authorText.innerHTML);
