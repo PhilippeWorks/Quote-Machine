@@ -14,12 +14,30 @@ body {
 
 .menu {
 	position: relative;
+	bottom: 0;
 }
+
+#author {
+	float: left;
+}
+
+#quote {
+	padding: 3%;
+}
+
 #quote-button {
-	position: absolute;
-	right: 0;
+	float: right;
 	background-color: white;
 	color: #42f45f;
+	height: 100%;
+}
+
+#fbook-button {
+	float: left;
+}
+
+#twitter-share-button {
+	float: left;
 }
 
 footer {

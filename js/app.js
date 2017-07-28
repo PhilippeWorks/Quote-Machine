@@ -1,5 +1,24 @@
+//facebook API
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '107416346608688',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
 //model quotes
-var data = [
+const data = [
 	{author: 'Howlin\' Wolf', quote: 'I couldn\'t do no yodelin\', so I turned to howlin\'. And it\'s done me just fine.'},
 	{author: 'Kanye West', quote: 'People always say that you can\'t please everybody. I think that\'s a cop-out. Why not attempt it? \'Cause think of all the people you will please if you try.'},
 	{author: 'Zlatan Ibrahimovic', quote: 'Some coaches prefer players who will just do whatever he tells them to. It\'s like, if you\'re at school with a load of 10 year old boys and you tell them to jump, everyone will starts to jump. But the intelligent boy will ask, \'Why should I jump?\' \'Why?\' That can be difficult for a lot of coaches, and I understand that.'},
@@ -23,38 +42,52 @@ var data = [
 	];
 
 //variables for id elements
-var quoteButton = document.getElementById('quote-button');
-var body = document.getElementsByTagName('body')[0];
-var quoteText = document.getElementById('quote');
-var authorText = document.getElementById('author');
-var twitterButton = document.getElementById('twitter-share-button');
+const quoteButton = document.getElementById('quote-button');
+const body = document.getElementsByTagName('body')[0];
+const quoteText = document.getElementById('quote');
+const authorText = document.getElementById('author');
+const twitterButton = document.getElementById('twitter-share-button');
+const facebookButton = document.getElementById('fbook-button');
 
 //model colors
-var colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb', '#42f45f', '#680000', '#879A9B', '#166C00', '#00FFC4'];
+let colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb', '#42f45f', '#680000', '#879A9B', '#166C00', '#00FFC4'];
 
-//selects and displays a new quote on random and updates tweet
-var randomizer = function () {
-	var random = Math.round(Math.random()*data.length) - 1;
+//selects and displays a new quote on random and updates text
+let randomizer = function () {
+	let random = Math.round(Math.random()*data.length) - 1;
 
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
 	authorText.innerHTML = "Once upon a time " + data[random].author + " said,";
 
 	//for tweet button
 	twitterButton.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + quoteText.innerHTML + ' ' + data[random].author);
+
+	//for facebook button
+	facebookButton.quote = authorText.innerHTML + quoteText.innerHTML 
 };
 
 //Selects and displays new color scheme
-var colorRandomizer = function () {
-	var colorRandom = Math.round(Math.random()*colorData.length) - 1;
+let colorRandomizer = function () {
+	let colorRandom = Math.round(Math.random()*colorData.length) - 1;
 	body.style.backgroundColor = colorData[colorRandom];
 	quoteButton.style.color = colorData[colorRandom];
-}
+};
 
 colorRandomizer();
 randomizer(); 
 
-//ties function to quote-button
+//ties functions to quote-button
 quoteButton.addEventListener('click', function() { 
 	randomizer();
 	colorRandomizer();
 });
+
+//facebook button
+facebookButton.onclick = function() {
+  FB.ui({
+    method: 'share',
+    mobile_iframe: true,
+    display: 'popup',
+    href: '',
+  }, function(response){});
+}
