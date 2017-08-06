@@ -57,7 +57,7 @@ let randomizer = function () {
 	let random = Math.round(Math.random()*data.length) - 1;
 
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
-	authorText.innerHTML = "Once upon a time " + data[random].author + " said,";
+	authorText.innerHTML = data[random].author;
 
 	//for tweet button
 	twitterButton.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + quoteText.innerHTML + ' ' + data[random].author);

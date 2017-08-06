@@ -1,7 +1,6 @@
 * {
 	box-sizing: border-box;
 	margin: 0 auto;
-	border: 1px dotted red;
 	color: white;
 	text-align: center;
 	font-family: 'Anton', sans-serif;
@@ -13,31 +12,36 @@ body {
 }
 
 .menu {
-	position: relative;
-	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+}
+
+.author-ctn {
+	text-align: left;
+	text-indent: 10%;
 }
 
 #author {
-	float: left;
+	font-size: 150%;
+	vertical-align: middle;
 }
 
 #quote {
 	padding: 3%;
+	font-size: 200%;
 }
 
 #quote-button {
-	float: right;
 	background-color: white;
 	color: #42f45f;
-	height: 100%;
+	margin: 0;
+	cursor: pointer;
 }
 
-#fbook-button {
-	float: left;
-}
-
-#twitter-share-button {
-	float: left;
+.social-btns {
+	margin: 0;
+	cursor: pointer;
 }
 
 footer {
