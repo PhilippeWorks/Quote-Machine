@@ -15,6 +15,9 @@ body {
 	display: flex;
 	justify-content: space-between;
 	margin: auto;
+	position: fixed;
+	top: 10%;
+	width: 50%
 }
 
 .author-ctn {
@@ -42,10 +45,20 @@ body {
 .social-btns {
 	margin: 0;
 	cursor: pointer;
+	width: 15%;
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
+	position: fixed;
+	bottom: 5%;
 	right: 2%;
+}
+
+#jumbotron {
+	margin: 30px;
+	position: relative;
+}
+
+#twitter-share-button {
+	padding-left: 8%;
 }

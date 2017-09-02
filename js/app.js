@@ -53,7 +53,7 @@ const facebookButton = document.getElementById('fbook-button');
 let colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb', '#42f45f', '#680000', '#879A9B', '#166C00', '#00FFC4'];
 
 //selects and displays a new quote on random and updates text
-let randomizer = function () {
+let randomizer = () => {
 	let random = Math.round(Math.random()*data.length) - 1;
 
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
@@ -67,7 +67,7 @@ let randomizer = function () {
 };
 
 //Selects and displays new color scheme
-let colorRandomizer = function () {
+let colorRandomizer = () => {
 	let colorRandom = Math.round(Math.random()*colorData.length) - 1;
 	body.style.backgroundColor = colorData[colorRandom];
 	quoteButton.style.color = colorData[colorRandom];
@@ -77,13 +77,16 @@ colorRandomizer();
 randomizer(); 
 
 //ties functions to quote-button
-quoteButton.addEventListener('click', function() { 
-	randomizer();
-	colorRandomizer();
+quoteButton.addEventListener('click', () => { 
+	$("#jumbotron").fadeOut( 400, () => {
+		$("#jumbotron").fadeIn();
+		randomizer();
+		colorRandomizer();
+	});
 });
 
 //facebook button
-facebookButton.onclick = function() {
+facebookButton.onclick = () => {
   FB.ui({
     method: 'share',
     mobile_iframe: true,
