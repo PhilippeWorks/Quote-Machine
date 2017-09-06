@@ -40,12 +40,21 @@ body {
 	color: #42f45f;
 	margin: 0;
 	cursor: pointer;
+	border-radius: 5px;
+}
+
+#quote-button:hover {
+	background-color: #bbbcbf;
 }
 
 .social-btns {
 	margin: 0;
 	cursor: pointer;
 	width: 15%;
+}
+
+.fa:hover {
+	color: #bbbcbf;
 }
 
 footer {

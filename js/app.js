@@ -54,8 +54,11 @@ let colorData = ['#5042f4', '#f44268', '#ad42f4', '#f4c741', '#f49242', '#42f4eb
 
 //selects and displays a new quote on random and updates text
 let randomizer = () => {
-	let random = Math.round(Math.random()*data.length) - 1;
-
+	let random = Math.round(Math.random()*data.length -1);
+	console.log(random);
+	if (random == -1) {
+		random = 19;
+	}
 	quoteText.innerHTML = "\"" + data[random].quote + "\"";
 	authorText.innerHTML = data[random].author;
 
